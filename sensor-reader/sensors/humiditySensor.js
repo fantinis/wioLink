@@ -10,8 +10,10 @@ module.exports = function(userToken, callback) {
             callback(null, sensorData.humidity)
             
         } else if (!error && response.statusCode !== 200) {            
+            var sensorData = JSON.parse(body);
             
-            console.log ('Humidity sensor, response error code ' + response.statusCode);
+            console.log ('Humidity sensor, response error code ' + 
+                         response.statusCode + ' ' + sensorData.error);
             callback(response.statusCode, null);
         }
         else {
