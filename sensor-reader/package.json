@@ -1,0 +1,25 @@
+{
+  "name": "sensor-reader",
+  "version": "1.0.0",
+  "description": "wiotLink sensor reader",
+  "main": "app.js",
+  "dependencies": {
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/fantinis/wioLink/tree/master/sensor-reader"
+  },
+  "keywords": [
+    "wio",
+    "link",
+    "groove",
+    "sensor"
+  ],
+  "author": "Stefano Fantini",
+  "license": "ISC"
+}
