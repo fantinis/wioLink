@@ -16,16 +16,14 @@ temperatureRouter.route('/')
 })
 
 .post(function (req, res, next) {
-    Temperatures.create(req.body, function (err, temperature) {
-        console.log('sono qui');
-        if (err) throw err;
-        console.log('Temperature added!');
+    Temperatures.create(req.body, function (err, temperature) {        
+        if (err) throw err;        
         var id = temperature._id;
 
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-        res.end('Added the temperature with id: ' + id);
+        res.end('Added Temperature on database: ' + temperature.temperature);
     });
 })
 

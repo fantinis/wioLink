@@ -1,5 +1,5 @@
 var request = require('request');
-var url = 'https://iot.seeed.cc/v1/node/GroveTempHumD0/temperature?access_token='
+var url = 'https://iot.seeed.cc/v1/node/GroveTempHumD0/temperature?access_token=';
 
 module.exports = function(userToken, callback) {
 

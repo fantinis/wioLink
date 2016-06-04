@@ -1,25 +1,33 @@
-var request = require('request');
-
 var temperatureSensor = require ('./sensors/temperatureSensor');
 var humiditySensor = require ('./sensors/humiditySensor');
 var airQualitySensor = require ('./sensors/airQualitySensor');
 var altitudeSensor = require ('./sensors/altitudeSensor');
 var pressureSensor = require ('./sensors/pressureSensor');
 
+var restServer = require ('./sensors/restServer');
+
 var userToken = 'a6c24dfec564ba5b602b85b981b1ad4a';
 var mongoDbUrl =  'localhost:27017';
+
 
 function getTemperature(interval) {
     
     var timer = setInterval(function(){ 
+        
         temperatureSensor(userToken, function(err, sensorData){
             if (err) {                
                 clearInterval(timer);
             }
-            else {
-                console.log ('Temeperature Data ' +  sensorData);
-                //call rest-server for store the data
-                request.post('localhost:3000/temperatures/', {temperature: sensorData});
+            else {              
+                restServer.setTemperature(sensorData, function(err, response){
+                    if (err) {                
+                        clearInterval(timer);
+                    }
+                    else {
+                        console.log ("Temperature readed from sensor and saved on DB: " + sensorData );
+                    }
+                });
+                
             }
         });
     }, interval); 
