@@ -17,7 +17,7 @@ module.exports = function(userToken, callback) {
         }
         else {
             
-            console.log ('Altitude sensor, rerquest error: ' + error + ' response code ' + response.statusCode);
+            console.log ('Altitude sensor, rerquest error: ' + error);
             callback(error, null);
             
         }

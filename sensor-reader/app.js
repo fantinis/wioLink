@@ -102,7 +102,7 @@ function getPressure(interval) {
 
 
 getTemperature(60000);
-getHumidity(3000);
+getHumidity(60000);
 /*getAirQuality(3000);
 getAltitude(6000);
 getPressure(6000);*/

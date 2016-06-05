@@ -18,7 +18,7 @@ module.exports = function(userToken, callback) {
         }
         else {
             
-            console.log ('Air Quality sensor, rerquest error: ' + error + ' response code ' + response.statusCode);
+            console.log ('Air Quality sensor, rerquest error: ' + error );
             callback(error, null);
             
         }
