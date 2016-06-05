@@ -4,7 +4,8 @@ var airQualitySensor = require ('./sensors/airQualitySensor');
 var altitudeSensor = require ('./sensors/altitudeSensor');
 var pressureSensor = require ('./sensors/pressureSensor');
 
-var restServer = require ('./sensors/restServer');
+var postTemperature = require ('./rest-api/postTemperature');
+var postHumidity = require ('./rest-api/postHumidity');
 
 var userToken = 'a6c24dfec564ba5b602b85b981b1ad4a';
 var mongoDbUrl =  'localhost:27017';
@@ -19,7 +20,7 @@ function getTemperature(interval) {
                 clearInterval(timer);
             }
             else {              
-                restServer.setTemperature(sensorData, function(err, response){
+                postTemperature.setTemperature(sensorData, function(err, response){
                     if (err) {                
                         clearInterval(timer);
                     }
@@ -41,8 +42,14 @@ function getHumidity(interval) {
                 clearInterval(timer);
             }
             else {
-                console.log ('Humidity Data ' +  sensorData);
-                //call rest-server for store the data
+                postHumidity.setHumidity(sensorData, function(err, response){
+                    if (err) {                
+                        clearInterval(timer);
+                    }
+                    else {
+                        console.log ("Humidity readed from sensor and saved on DB: " + sensorData );
+                    }
+                });
             }
         });
     }, interval); 
@@ -94,8 +101,8 @@ function getPressure(interval) {
 };
 
 
-getTemperature(3000);
-/*getHumidity(3000);
-getAirQuality(3000);
+getTemperature(60000);
+getHumidity(3000);
+/*getAirQuality(3000);
 getAltitude(6000);
 getPressure(6000);*/

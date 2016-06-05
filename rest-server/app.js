@@ -20,6 +20,7 @@ db.once('open', function () {
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var temperatureRouter = require('./routes/temperatureRouter');
+var umidityRouter = require('./routes/humidityRouter');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/temperatures',temperatureRouter);
+app.use('/humidities',umidityRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

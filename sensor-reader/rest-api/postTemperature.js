@@ -19,8 +19,7 @@ module.exports = {
                 callback(null, body)
 
             } else if (!error && response.statusCode !== 200) {            
-                var sensorData = JSON.parse(body);
-
+                
                 console.log ('rest-server response error code ' + 
                              response.statusCode + ' ' + body);
                 callback(response.statusCode, null);
